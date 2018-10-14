@@ -19,11 +19,32 @@ let slides = document.querySelectorAll('.slide'),
         slides[0].style.display = 'flex';
     }
 
-    
+    function slideLeft() {
+        reset();
+        slides[current - 1].style.display = 'flex';
+        current--;
+    }
+
     arrowLeft.addEventListener('click', function() {
         if(current === 0) {
-
+            current = slides.length;
         }
+        slideLeft();
+
+        
+    });
+
+    function slideRight() {
+        reset();
+        slides[current + 1].style.display = 'flex';
+        current++;
+    }
+
+    arrowRight.addEventListener('click', function() {
+        if(current === slides.length - 1) {
+            current = -1;
+        }
+        slideRight();
     });
 
     startSlide();
